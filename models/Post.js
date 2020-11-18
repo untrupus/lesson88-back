@@ -19,7 +19,8 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectID,
         ref: "User",
         required: true
-    }
+    },
+    datetime: String
 });
 
 const Post = mongoose.model("Post", PostSchema);
