@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 router.post('/', auth, async (req, res) => {
     const commentData = req.body;
     commentData.user = req.user._id;
+    commentData.datetime = new Date();
     const comment = new Comment(commentData)
     try {
         await comment.save();

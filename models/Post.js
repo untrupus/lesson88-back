@@ -12,14 +12,13 @@ const PostSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
     },
     user: {
         type: Schema.Types.ObjectID,
         ref: "User",
         required: true
     },
-    datetime: String
+    datetime: Date
 });
 
 const Post = mongoose.model("Post", PostSchema);
