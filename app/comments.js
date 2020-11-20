@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     if (req.query.post) {
         query = {post: req.query.post}
     }
-    const result = await Comment.find(query).sort({"datetime": 1}).populate({path: "user"});
+    const result = await Comment.find(query).sort({"datetime": -1}).populate({path: "user"});
     if (result) {
         res.send(result);
     } else {

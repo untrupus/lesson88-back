@@ -6,7 +6,16 @@ const auth = require('../middleware/auth');
 
 
 router.get('/', async (req, res) => {
-    const result = await Post.find().populate({path: "user"});
+    const result = await Post.find().sort({"datetime": -1}).populate({path: "user"});
+    if (result) {
+        res.send(result);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
+router.get('/:id', async (req, res) => {
+    const result = await Post.findById(req.params.id).populate({path: "user"});
     if (result) {
         res.send(result);
     } else {
